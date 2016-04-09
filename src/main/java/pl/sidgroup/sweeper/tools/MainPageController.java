@@ -1,9 +1,10 @@
 package pl.sidgroup.sweeper.tools;
 
+import javax.inject.Named;
 import javax.enterprise.inject.Model;
 
 @Model
-@Named(value="welcomeBean")
+@Named(value="mainPageController")
 public class MainPageController {
 	
 //	@EJB
