@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"    
+    xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+    xmlns:sweeper="http://xmlns.jcp.org/jsf/composite/components" >
+    
+<h:head>
+	<title>Welcome</title>
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="angular.min.js" />
+	<link rel="shortcut icon" type="image/png" href="#{resource['img:favicon.png']}"/>
+</h:head>
+
+<h:body>
+
+	
+	<h:form class="form list-header">
+		<h:panelGrid columns="7" id="header">
+
+			<h:graphicImage value="#{resource['img:logo.png']}" alt="ivmx" style="margin-right: 100px;" />
+
+		</h:panelGrid>
+	</h:form>
+	<h:form class ="form diffList">
+		<h:panelGroup style="width: 80%; height: 30px; position: fixed; bottom: 15px; left: 0; text-align: center; z-index: 3;"
+				 id="messageContainer" rendered="#{mainPageController.message ne null}">
+			<div style="background-color: #FAFAFE; border: solid 1px #CCC; border-radius: 15px; margin: auto; height: 30px; width: 700px;">
+				<div style="float:left; width: 660px; margin-top: 7px; margin-left: 10px; font-weight: bold; ">
+					<h:outputText value="#{mainPageController.message}"/>
+				</div>
+				<h:commandLink action="#{mainPageController.clearMessage()}" value="&#x2717;" style="float:right; margin: 5px 10px 0 0; text-decoration: none; color: black;">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandLink>
+			</div>
+		</h:panelGroup>
+		<h:outputLink value="test.xhtml">
+			ekran testowy ...
+		</h:outputLink>
+		
+	</h:form>
+	<h:form class="form actionBar">
+		<h:commandButton action="#{mainPageController.reloadConfiguration()}" value="reloadConfiguration" styleClass="button" style="float: left;" />
+	</h:form>
+</h:body>
+
+</html>
