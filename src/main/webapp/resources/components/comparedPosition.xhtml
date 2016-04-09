@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <composite:interface>
+        <composite:attribute name="compared" type="pl.sidgroup.sweeper.core.comparator.DiffContainerEntry" />
+    </composite:interface>
+
+    <composite:implementation>  
+    		<div class="diffEntry" style="background-color: #{(cc.attrs.compared.different) ? '#FFEEEE' : (cc.attrs.compared.merged ? '#EFFFEF' : '#FFF' )}" >
+    		
+    			<h:outputText value="Usunięty" rendered="#{cc.attrs.compared.deleted and cc.attrs.compared.hasLocalChanges()}" style="float: left; transform: rotate(90deg); transform-origin: left top 0;  margin: 15px;" />
+         		<h:outputText value="Zmieniony" rendered="#{(not cc.attrs.compared.deleted) and cc.attrs.compared.hasLocalChanges()}" style="float: left; transform: rotate(90deg); transform-origin: left top 0; margin: 15px;" />
+         		<div style="margin: auto; text-align: left; width: 750px;">
+         		<div style="float: left; width: 350px; min-height: 30px; ">
+					<ui:repeat var="attribute" value="#{cc.attrs.compared.local}">
+						<div style="border: 1px #000000; margin: 10px; clear: both; color: #{attribute.key ? '#008800' : '#000000'}">
+							<div style="width: 50%; float:left;">
+								<h:outputText value="#{attribute.name}:" />
+							</div>
+							<div style="width: 50%; float:left;">
+								<h:outputText value="#{attribute.oldValue}" rendered="#{attribute.oldValue ne null}" style="text-decoration: line-through;" />
+								<h:outputText value=" &rarr; " rendered="#{attribute.oldValue ne null}" />
+								<h:outputText value="#{attribute.value}" style="text-decoration: #{attribute.different ? 'underline' : 'none'};"/>
+							</div>
+						</div>
+					</ui:repeat>
+				</div>
+				<div style="float: left; width: 40px; min-height: 30px; padding-top: 20px;">
+			        <h:commandButton value="&larr;"  styleClass="button" action="#{comparatorController.mergeFromRemoteToLocal(cc.attrs.compared)}">
+			        	<f:ajax execute="@form" render="@form" />
+			        </h:commandButton>
+			        <h:commandButton value="&rarr;"  styleClass="button" action="#{comparatorController.mergeFromLocalToRemote(cc.attrs.compared)}">
+						<f:ajax execute="@form" render="@form" />			        	
+			        </h:commandButton>
+				</div>
+				
+					
+				<div style="float: left; width: 350px; min-height: 30px;">
+					<ui:repeat var="attribute" value="#{cc.attrs.compared.remote}">
+						<div style="border: 1px #000000; margin: 10px; clear: both; color: #{attribute.key ? '#008800' : '#000000'}">
+							<div style="width: 50%; float:left;">
+								<h:outputText value="#{attribute.name}:" />
+							</div>
+							<div style="width: 50%; float:left;">
+								<h:outputText value="#{attribute.oldValue}" rendered="#{attribute.oldValue ne null}" style="text-decoration: line-through;" />
+								<h:outputText value=" &rarr; " rendered="#{attribute.oldValue ne null}" />
+								<h:outputText value="#{attribute.value}" style="text-decoration: #{attribute.different ? 'underline' : 'none'};" />
+							</div>
+						</div>
+					</ui:repeat>
+				</div>
+				</div>
+				<h:outputText value="Usunięty" rendered="#{cc.attrs.compared.deleted and cc.attrs.compared.hasRemoteChanges()}" style="float: right; transform: rotate(270deg); transform-origin: right bottom 0; " />
+         		<h:outputText value="Zmieniony" rendered="#{(not cc.attrs.compared.deleted) and cc.attrs.compared.hasRemoteChanges()}" style="float: right; transform: rotate(270deg); transform-origin: right bottom 0; " />
+			</div>
+    </composite:implementation>
+</html>
