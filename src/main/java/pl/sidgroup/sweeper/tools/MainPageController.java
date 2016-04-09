@@ -3,6 +3,7 @@ package pl.sidgroup.sweeper.tools;
 import javax.enterprise.inject.Model;
 
 @Model
+@Named(value="welcomeBean")
 public class MainPageController {
 	
 //	@EJB
