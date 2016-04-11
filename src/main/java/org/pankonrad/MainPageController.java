@@ -1,7 +1,9 @@
-package pl.sidgroup.sweeper.tools;
+package org.pankonrad;
 
+import javax.enterprise.inject.Model;
 import javax.inject.Named;
 
+@Model
 @Named(value="mainPageController")
 public class MainPageController {
 
