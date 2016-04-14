@@ -12,9 +12,9 @@
       <property name="hibernate.hbm2ddl.auto" value="create-drop" />
       <property name="hibernate.show_sql" value="false" />
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/jee01" />
-		<property name="hibernate.connection.username" value="jee01" />
-		<property name="hibernate.connection.password" value="jee01" />	  
+		<property name="hibernate.connection.url" value="jdbc:postgresql://${POSTGRESQL_SERVICE_HOST}:${POSTGRESQL_SERVICE_PORT}/${POSTGRESQL_DATABASE}" />
+		<property name="hibernate.connection.username" value="${POSTGRESQL_USER}" />
+		<property name="hibernate.connection.password" value="${POSTGRESQL_PASSWORD}" />	  
     </properties>
   </persistence-unit>
 </persistence>
