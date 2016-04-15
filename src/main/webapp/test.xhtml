@@ -13,6 +13,12 @@
 			<h:outputLabel value="click here" />
 		</f:ajax>
 		<h:outputText id="nameField" value="Welcome #{welcomeBean.name}" />
+				
+		<h:commandButton label="refresh" action="#{welcomeBean.refresh()}" >
+		</h:commandButton>
+		<br />
+		<h:outputFormat value="#{welcomeBean.persons}">
+		</h:outputFormat>
 	</h:form>
 
 </body> 
