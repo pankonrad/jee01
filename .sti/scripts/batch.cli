@@ -1,5 +1,0 @@
-batch
-
-/subsystem=datasources/data-source=jee01DS:add(driver-name=postgresql,user-name=jee01,password=jee01,connection-url=jdbc:postgresql://${env.POSTGRESQL_SERVICE_HOST}:5432/jee01,min-pool-size=5,max-pool-size=15,jndi-name=java:jboss/datasources/jee01DS,enabled=true)
-
-run-batch
