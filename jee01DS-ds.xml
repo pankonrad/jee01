@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+ <datasource jndi-name="java:jboss/datasources/New_PostgreSQL" enabled="true" 
+     use-java-context="true" pool-name="New_PostgreSQL">
+  <connection-url>jdbc:postgresql://${POSTGRESQL_SERVICE_HOST}:5432/jee01</connection-url>
+  <driver>postgresql-9.4-1203.jdbc4.jar</driver>
+  <pool></pool>
+  <security>
+   <user-name>jee01</user-name>
+   <password>jee01</password>
+  </security>
+ </datasource>
+</datasources>
