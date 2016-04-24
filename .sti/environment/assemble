@@ -1,0 +1,3 @@
+#!/bin/bash
+cp /opt/app-root/src/jee01DS-ds.xml /wildfly/standalone/deployments/
+cp /opt/app-root/src/postgresql-9.4-1203.jdbc4.jar /wildfly/standalone/deployments/
