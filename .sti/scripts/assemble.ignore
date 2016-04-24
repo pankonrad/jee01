@@ -46,9 +46,13 @@ if [ -f "$local_source_dir/pom.xml" ]; then
   echo "Copying built war files into $deploy_dir for later deployment..."
   if [ -d $local_source_dir/target ]; then
     cp $local_source_dir/target/*.war $deploy_dir >& /dev/null
+    cp $local_source_dir/jee01DS-ds.xml $deploy_dir >& /dev/null
+    cp $local_source_dir/postgresql-9.4-1203.jdbc4.jar $deploy_dir >& /dev/null
   fi
   if [ -d $local_source_dir/deployments ]; then
     cp $local_source_dir/deployments/*.war $deploy_dir >& /dev/null
+    cp $local_source_dir/jee01DS-ds.xml $deploy_dir >& /dev/null
+    cp $local_source_dir/postgresql-9.4-1203.jdbc4.jar $deploy_dir >& /dev/null    
   fi
   
   if [ -d $local_source_dir/cfg ]; then
@@ -69,9 +73,13 @@ else
   echo "Copying binaries in source directory into $deploy_dir for later deployment..."
   if [ -d $local_source_dir/target ]; then
     cp $local_source_dir/target/*.war $deploy_dir >& /dev/null
+    cp $local_source_dir/jee01DS-ds.xml $deploy_dir >& /dev/null
+    cp $local_source_dir/postgresql-9.4-1203.jdbc4.jar $deploy_dir >& /dev/null    
   fi
   if [ -d $local_source_dir/deployments ]; then
     cp $local_source_dir/deployments/*.war $deploy_dir >& /dev/null
+    cp $local_source_dir/jee01DS-ds.xml $deploy_dir >& /dev/null
+    cp $local_source_dir/postgresql-9.4-1203.jdbc4.jar $deploy_dir >& /dev/null    
   fi
   if [ -d $local_source_dir/cfg ]; then
     echo "Copying config files from project..."
